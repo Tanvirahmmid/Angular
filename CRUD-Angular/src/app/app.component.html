@@ -1,0 +1,47 @@
+
+<div class="container col-sm-6">
+  <h1>Employee Management</h1>
+<form [formGroup]="employeeForm" (ngSubmit)="addEmployee()">
+  <div>
+    <label for="id">ID:</label>
+    <input class="form-control" type="number" id="id" formControlName="id" required>
+  </div>
+  <div>
+    <label for="name">Name:</label>
+    <input class="form-control" type="text" id="name" formControlName="name" required>
+  </div>
+  <div>
+    <label for="address">Address:</label>
+    <input class="form-control" type="text" id="address" formControlName="address" required>
+  </div>
+  <div>
+    <label for="phoneNumber">Phone Number:</label>
+    <input class="form-control" type="text" id="phoneNumber" formControlName="phoneNumber" required>
+  </div>
+  <button class="btn btn-warning mt-2" type="submit">{{ isEdit ? 'Update Employee' : 'Add Employee' }}</button>
+</form>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Phone Number</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let employee of employees">
+    <td>{{ employee.id }}</td>
+    <td>{{ employee.name }}</td>
+    <td>{{ employee.address }}</td>
+    <td>{{ employee.phoneNumber }}</td>
+    <td>
+      <button class="btn btn-info" (click)="editEmployee(employee)">Edit</button>
+      <button class="btn btn-danger ms-1" (click)="deleteEmployee(employee)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</div>
